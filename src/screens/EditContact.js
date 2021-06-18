@@ -9,7 +9,7 @@ const EditContact = ({route}) => {
   const contact = route.params
   const [name, setname] = useState(contact.name);
   const [number, setnumber] = useState(contact.number);
-  console.log(name, number);
+  // console.log(name, number);
   return (
     <>
       <Header title="Edit Contact" showEditBtn="none" showAddBtn="none" />

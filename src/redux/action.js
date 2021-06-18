@@ -11,7 +11,7 @@ const initilizeContact = (data) => {
     };
   };
   // this function is used for deleting data from list
-  const deleteTodo = (data) => {
+  export const deleteContact = (data) => {
     return (dispatch) => {
       dispatch({type: 'DELETE_CONTACT', payload: data});
     };

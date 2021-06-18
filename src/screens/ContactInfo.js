@@ -2,14 +2,16 @@ import React from 'react';
 import {StyleSheet, FlatList, View, Text, Pressable} from 'react-native';
 import Header from '../components/Header';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
+import {connect} from 'react-redux';
+import { deleteContact } from '../redux/action';
 
-const ContactInfo = ({route, navigation}) => {
+const ContactInfo = ({route, navigation,  deleteContact}) => {
   const contactDetails = route.params;
   const btns = [
     {
         id: 'deleteBtn',
         title: 'Delete Contact',
-        onpress: () => console.log('delete btn'),
+        onpress: () => {deleteContact(contactDetails.id); navigation.navigate('Home')},
     },
     {
         id: 'editBtn',
@@ -40,8 +42,12 @@ const ContactInfo = ({route, navigation}) => {
   );
 };
 
-export default ContactInfo;
-
+const mapStateToProps = (state) => ({})
+const mapDispatchToProps = (dispatch) => ({
+  deleteContact : (data) => dispatch(deleteContact(data)),
+  
+});
+export default connect(mapStateToProps, mapDispatchToProps)(ContactInfo);
 const styles = StyleSheet.create({
   contactInfoScreen: {
     // flex: 1,
