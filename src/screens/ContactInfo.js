@@ -3,7 +3,8 @@ import {StyleSheet, FlatList, View, Text, Pressable} from 'react-native';
 import Header from '../components/Header';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 
-const ContactInfo = () => {
+const ContactInfo = ({route, navigation}) => {
+  const contactDetails = route.params;
   const btns = [
     {
         id: 'deleteBtn',
@@ -13,7 +14,7 @@ const ContactInfo = () => {
     {
         id: 'editBtn',
         title: 'Edit Contact',
-        onpress: () => console.log('edit btn'),
+        onpress: () => navigation.navigate('EditContact', contactDetails),
     },
   ];
   return (
@@ -21,8 +22,8 @@ const ContactInfo = () => {
       <Header title="Details" showAddBtn='none' />
       <View style={styles.contactInfoScreen}>
         <EvilIcons name="user" size={150} color="#000" />
-        <Text style={styles.contactNameText}>Hassan</Text>
-        <Text style={styles.contactNumberText}>1234567</Text>
+        <Text style={styles.contactNameText}>{contactDetails.name}</Text>
+        <Text style={styles.contactNumberText}>{contactDetails.number}</Text>
       </View>
       <View style={styles.contactInfoScreen_buttonSection}>
         <FlatList

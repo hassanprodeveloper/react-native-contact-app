@@ -3,7 +3,7 @@ import {StyleSheet, View, Text, Pressable} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {windowWidth, windowHeight} from '../assets/Dimensions';
 
-const Header = ({navigation, title , showAddBtn}) => {
+const Header = ({headerAddIconFunction, title ,showEditBtn, showAddBtn}) => {
   return (
     <>
       <View style={styles.HeaderCont}>
@@ -11,12 +11,13 @@ const Header = ({navigation, title , showAddBtn}) => {
           <Text style={styles.headerTitle}>{title}</Text>
         </View>
         <View style={styles.headerIconsCont}>
-          <Pressable onPress={() => console.log('edit btn pressed')}>
+
+          <Pressable style={{display:  showEditBtn}} onPress={() => console.log('edit btn pressed')}>
             <Text style={styles.headerEditText}>Edit</Text>
           </Pressable>
 
           <Ionicons
-            onPress={() => console.log('plus btn pressed')}
+            onPress={headerAddIconFunction}
             style={{...styles.headerPlusIcon, display: showAddBtn}}
             name="add"
             size={30}
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
     width: windowWidth,
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 10,
+    padding: 18,
   },
   headerTitle: {
     fontSize: 25,

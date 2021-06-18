@@ -12,6 +12,7 @@ const Navigations = () => {
         <Screen name="Home" component={Screens.Home} />
         <Screen name="AddContact" component={Screens.AddContact} />
         <Screen name="ContactInfo" component={Screens.ContactInfo} />
+        <Screen name="EditContact" component={Screens.EditContact} />
       </Navigator>
     </NavigationContainer>
   );

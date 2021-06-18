@@ -4,17 +4,23 @@ import Header from '../components/Header';
 import {connect} from 'react-redux';
 import ContactCard from '../components/ContactCard';
 
-const Home = ({contactList}) => {
-    return (
-        <View>
-      <Header title="Contacts" />
+const Home = ({navigation, contactList}) => {
+  return (
+    <View>
+      <Header
+        title="Contacts"
+        showEditBtn="none"
+        headerAddIconFunction={() => navigation.navigate('AddContact')}
+      />
       <FlatList
         data={contactList}
         renderItem={({item}) => (
           <ContactCard
+            navigation={navigation}
             id={item.id}
             contactName={item.name}
             contactNumber={item.number}
+            contactDetails={item}
           />
         )}
         keyExtractor={(item) => item.id}
@@ -24,10 +30,9 @@ const Home = ({contactList}) => {
 };
 
 const mapStateToProps = (state) => {
-    console.log(state);
-    
-    return  {
-  contactList: state,
-}};
+  return {
+    contactList: state,
+  };
+};
 const mapDispatchToProps = (dispatch) => ({});
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

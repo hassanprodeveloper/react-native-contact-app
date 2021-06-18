@@ -2,10 +2,10 @@ import React from 'react';
 import {StyleSheet, View, Text, Pressable} from 'react-native';
 import {connect} from 'react-redux';
 
-const ContactCard = ({navigation, id, contactName, contactNumber}) => {
+const ContactCard = ({navigation, id, contactName, contactNumber, contactDetails}) => {
   return (
     <>
-      <Pressable style={styles.contactCard_mainCont} onPress={() => {}}>
+      <Pressable style={styles.contactCard_mainCont} onPress={() => navigation.navigate('ContactInfo', contactDetails)}>
         <View id={id} style={styles.contactCard_Cont}>
           <Text style={styles.contactCard_text}>{contactName}</Text>
           <Text style={styles.contactCard_number}>{contactNumber}</Text>

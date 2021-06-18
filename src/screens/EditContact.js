@@ -5,17 +5,18 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import InputField from '../components/InputsField';
 import FormButton from '../components/FormButton';
 
-const AddContact = ({contactList}) => {
-  const [name, setname] = useState(contactList.name);
-  const [number, setnumber] = useState(contactList.number);
+const EditContact = ({route}) => {
+  const contact = route.params
+  const [name, setname] = useState(contact.name);
+  const [number, setnumber] = useState(contact.number);
   console.log(name, number);
   return (
     <>
-      <Header title="Add Contact" showEditBtn="none" showAddBtn="none" />
-      <View style={styles.AddContactScreen}>
+      <Header title="Edit Contact" showEditBtn="none" showAddBtn="none" />
+      <View style={styles.EditContactScreen}>
         <EvilIcons name="user" size={150} color="#000" />
       </View>
-      <View style={styles.AddContactScreen_buttonSection}>
+      <View style={styles.EditContactScreen_buttonSection}>
         <InputField
           onChangeText={(e) => setname(e)}
           labelValue={name}
@@ -29,27 +30,22 @@ const AddContact = ({contactList}) => {
           placeholderText="Contact number"
           iconType="mobile1"
         />
-        <FormButton
-          // isLoading={disable}
-          // iconType="edit"
-          buttonTitle="Create New Contact"
-          onPress={() => loginHandler()}
-        />
+        <FormButton buttonTitle="Update Contact" onPress={() => {}} />
       </View>
     </>
   );
 };
 
-export default AddContact;
+export default EditContact;
 
 const styles = StyleSheet.create({
-  AddContactScreen: {
+  EditContactScreen: {
     // flex: 1,
     alignItems: 'center',
     // padding: 20,
     paddingTop: 100,
   },
-  AddContactScreen_buttonSection: {
+  EditContactScreen_buttonSection: {
     flex: 1,
     // alignItems: 'center',
     padding: 20,
