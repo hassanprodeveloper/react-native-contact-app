@@ -4,8 +4,8 @@ const initilizeContact = (data) => {
       dispatch({type: 'INITILIZE', payload: data});
     };
   };
-  // this function add todos in todos list in redux store
-  const ContactData = (data) => {
+  // this function add contact in contact list in redux store
+  export const addContactData = (data) => {
     return (dispatch) => {
       dispatch({type: 'SET_CONTACT', payload: data});
     };
@@ -29,5 +29,4 @@ const initilizeContact = (data) => {
     };
   };
   
-  export {contactData,resetContact, deleteContact, contactStatus, initilizeContacts};
   

@@ -24,7 +24,7 @@ export default (state = INITIAL_STATE, action) => {
   }
   //
   switch (action.type) {
-    case 'SET_TODOS':
+    case 'SET_CONTACT':
       return [action.payload, ...state];
   }
   //

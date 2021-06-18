@@ -4,11 +4,12 @@ import Header from '../components/Header';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import InputField from '../components/InputsField';
 import FormButton from '../components/FormButton';
+import {connect} from 'react-redux';
+import {addContactData} from '../redux/action'
 
-const AddContact = ({contactList}) => {
-  const [name, setname] = useState(contactList.name);
-  const [number, setnumber] = useState(contactList.number);
-  console.log(name, number);
+const AddContact = ({navigation, contactList, addContactData}) => {
+  const [name, setname] = useState(null);
+  const [number, setnumber] = useState(null);
   return (
     <>
       <Header title="Add Contact" showEditBtn="none" showAddBtn="none" />
@@ -33,14 +34,31 @@ const AddContact = ({contactList}) => {
           // isLoading={disable}
           // iconType="edit"
           buttonTitle="Create New Contact"
-          onPress={() => loginHandler()}
+          onPress={() => 
+            {addContactData({
+              id: number,
+              name: name,
+              number: number,
+            })
+            navigation.navigate('Home')
+            }}
         />
       </View>
     </>
   );
 };
 
-export default AddContact;
+const mapStateToProps = (state) => {
+  return {
+    contactList: state,
+  };
+};
+const mapDispatchToProps = (dispatch) => ({
+  addContactData : (data) => dispatch(addContactData(data)),
+  
+});
+export default connect(mapStateToProps, mapDispatchToProps)(AddContact);
+
 
 const styles = StyleSheet.create({
   AddContactScreen: {
